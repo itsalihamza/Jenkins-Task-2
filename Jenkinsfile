@@ -9,22 +9,22 @@ pipeline {
     stage('Install') {
       steps {
         // use npm ci in CI; fallback to npm install
-        sh 'npm ci || npm install'
+        bat 'npm ci || npm install'
       }
     }
     stage('Lint') {
       steps {
-        sh 'npm run lint'
+        bat 'npm run lint'
       }
     }
     stage('Test') {
       steps {
-        sh 'npm test'
+        bat 'npm test'
       }
     }
     stage('Archive') {
       steps {
-        sh 'npm run archive'
+        bat 'npm run archive'
         archiveArtifacts artifacts: 'artifact.zip', fingerprint: true
       }
     }
